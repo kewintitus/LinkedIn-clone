@@ -7,28 +7,48 @@
 
 .header-left {
   display: flex;
+  gap: 15px;
 }
 
 .header-left--icon svg {
-  width: 34px;
-  height: 34px;
+  width: 46px;
+  height: 46px;
+}
+
+.header-search {
+  position: absolute;
+  left: 165px;
+  top: 25px;
+  z-index: 999;
 }
 
 .header-left input {
   border: none;
   background-color: aliceblue;
   transition: all 0.5s;
-  padding: 5px;
+  padding: 10px;
+  width: 250px;
+  transition: 0.5s;
+  -moz-transition: 0.5s;
+  -webkit-transition: 0.5s;
+  -o-transition: 0.5s;
+  padding-left: 40px;
+  position: relative;
+  font-size: 16px;
 }
 
 .header-left input:focus {
   border: none;
   transition: all 0.5s;
   width: 350px;
+  transition: 0.5s;
+  -moz-transition: 0.5s;
+  -webkit-transition: 0.5s;
+  -o-transition: 0.5s;
 }
 .header-right {
   display: flex;
-  gap: 10px;
+  gap: 20px;
 }
 
 .header-right--nav {
@@ -36,11 +56,14 @@
   flex-direction: column;
   align-items: center;
   transition: all 0.3s;
+  justify-items: center;
 }
 
 .nav_icon {
   font-size: 30px;
   color: rgb(195, 193, 193);
+  justify-self: center;
+  align-self: center;
 }
 
 .header-right--nav label {
@@ -48,8 +71,20 @@
   color: rgb(195, 193, 193);
 }
 
-.header-right--nav:hover .nav_icon,
-.header-right--nav label:hover {
+.nav-labelDropdown {
+  display: flex;
+  align-items: center;
+}
+
+.header-right--nav:hover .nav_icon {
   color: black;
   cursor: pointer;
+}
+
+.header-right--nav:hover label {
+  color: black;
+  cursor: pointer;
+}
+.vl {
+  border-left: 2px solid lightgray;
 }
