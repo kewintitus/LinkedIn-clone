@@ -1,29 +1,34 @@
-import { Avatar } from '@mui/material';
-import React from 'react';
+import { Avatar, IconButton } from '@mui/material';
+import React, { Fragment } from 'react';
+import RecentListItem from './RecentListItem';
+
+import TagIcon from '@mui/icons-material/Tag';
+
 import classes from './Sidebar.module.css';
+import { Add } from '@mui/icons-material';
 
 const Sidebar = () => {
   return (
-    <div className={classes.sidebar}>
-      <div className={classes.sidebar__top}>
-        <img src="https://wallpaperaccess.com/full/187161.jpg" alt=""></img>
-        <Avatar className={classes.sidebarAvatar} />
-        <h2>Kewin Titus A</h2>
-        <h4>Title</h4>
-      </div>
-
-      <div className={classes.sidebar__stats}>
-        <div className={classes.sidebar__stat}>
-          <p className={classes.statName}>Who's viewed your profile</p>
-          <p className={classes.statNumber}>1,255</p>
+    <div className={classes.sidebar_container}>
+      <div className={classes.sidebar}>
+        <div className={classes.sidebar__top}>
+          <img src="https://wallpaperaccess.com/full/187161.jpg" alt=""></img>
+          <Avatar className={classes.sidebarAvatar} />
+          <h2>Kewin Titus A</h2>
+          <h4>Title</h4>
         </div>
-        <div className={classes.sidebar__stat}>
-          <p className={classes.statName}>Connections</p>
-          <p className={classes.statNumber}>12,057</p>
-        </div>
-      </div>
 
-      <div className={classes.sidebar__bottom}>
+        <div className={classes.sidebar__stats}>
+          <div className={classes.sidebar__stat}>
+            <p className={classes.statName}>Who's viewed your profile</p>
+            <p className={classes.statNumber}>1,255</p>
+          </div>
+          <div className={classes.sidebar__stat}>
+            <p className={classes.statName}>Connections</p>
+            <p className={classes.statNumber}>12,057</p>
+          </div>
+        </div>
+
         <div className={classes.sidebar__premium}>
           <p className={classes.sidebar__premiumInfo}>
             Access exclusive tools and insights
@@ -66,6 +71,32 @@ const Sidebar = () => {
             </svg>
             <p>My items</p>
           </div>
+        </div>
+      </div>
+      <div className={classes.sidebar_recent}>
+        <div className={classes.sidebar_recentHash}>
+          <p className={classes.recentTitle}>Recent</p>
+          <RecentListItem icon={TagIcon} text="javascript" />
+          <RecentListItem icon={TagIcon} text="react" />
+          <RecentListItem icon={TagIcon} text=".net" />
+          <RecentListItem icon={TagIcon} text="node" />
+        </div>
+        <div className={classes.sidebar_groups}>
+          <p className={classes.groupsTitle}>Groups</p>
+          <RecentListItem icon={TagIcon} text="computational design" />
+          <RecentListItem icon={TagIcon} text="responsive design" />
+          <RecentListItem icon={TagIcon} text="engineers" />
+        </div>
+        <div className={classes.sidebar_events}>
+          <div className={classes.event}>
+            <div className={classes.eventTitle}>Events</div>
+            <IconButton>
+              <Add />
+            </IconButton>
+          </div>
+        </div>
+        <div className={classes.sidebar_discover}>
+          <p>Discover More</p>
         </div>
       </div>
     </div>
