@@ -8,14 +8,14 @@
 
 .nav_icon {
   font-size: 30px;
-  color: rgb(195, 193, 193);
+  color: rgb(156, 156, 156);
   justify-self: center;
   align-self: center;
 }
 
 .header-right--nav label {
   font-size: 14px;
-  color: rgb(195, 193, 193);
+  color: rgb(156, 156, 156);
 }
 
 .header-right--nav:hover .nav_icon {
