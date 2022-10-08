@@ -43,6 +43,7 @@
 .sidebar__stat {
   display: flex;
   justify-content: space-between;
+  transition: all 0.3s;
 }
 .statName {
   color: gray;
@@ -58,6 +59,7 @@
   border: solid 1px lightgray;
   border-top: none;
   border-bottom: solid 1px lightgray;
+  transition: all 0.3s;
 }
 .sidebar__premiumInfo {
   color: rgb(148, 148, 148);
@@ -131,5 +133,28 @@
 .sidebar_discover p {
   padding: 20px 0;
   font-weight: 600;
-  color: rgb(148, 148, 148);
+  color: rgb(126, 126, 126);
+}
+
+/* Hover */
+/* background-color: rgb(230, 230, 230); */
+
+.sidebar__premium:hover {
+  background-color: rgb(230, 230, 230);
+  cursor: pointer;
+}
+
+.sidebar__stat:hover {
+  background-color: rgb(230, 230, 230);
+  cursor: pointer;
+}
+
+.myItems:hover {
+  background-color: rgb(230, 230, 230);
+  cursor: pointer;
+}
+
+.sidebar_discover:hover {
+  background-color: rgb(230, 230, 230);
+  cursor: pointer;
 }

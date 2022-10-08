@@ -5,6 +5,7 @@
   padding: 0 10px;
 
   font-size: 14px;
+  transition: all 0.3s;
 }
 
 .listItem p {
@@ -15,4 +16,9 @@
 .icon {
   width: 20px;
   color: rgb(121, 121, 121);
+}
+
+.listItem:hover {
+  background-color: rgb(230, 230, 230);
+  cursor: pointer;
 }
