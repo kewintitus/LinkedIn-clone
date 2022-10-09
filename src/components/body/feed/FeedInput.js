@@ -1,10 +1,14 @@
 import { Avatar } from '@mui/material';
-import React from 'react';
+import React, { useState } from 'react';
 import classes from './FeedInput.module.css';
+import PostModal from './PostModal';
 
 const FeedInput = (props) => {
+  const [postModalOpen, setPostModalOpen] = useState(false);
+
   return (
     <div className={classes.feed_input}>
+      {!postModalOpen && <PostModal />}
       <div className={classes.feed_input__create}>
         <Avatar className={classes.inputAvatar} />
         <div className={classes.inputArea}>

@@ -1,0 +1,27 @@
+.postModal {
+  position: absolute;
+  background-color: rgba(0, 0, 0, 0.225);
+  width: 100vw;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  z-index: 9999;
+}
+.modalWindow {
+  position: fixed;
+  width: 600px;
+  height: 400px;
+  background-color: white;
+  left: 50%;
+  transform: translateX(-50%);
+  top: 15%;
+  border-radius: 10px;
+}
+.modalHeader {
+  padding: 15px;
+  border-bottom: 1px solid lightgray;
+}
+
+.modalHeader h2 {
+  font-weight: 400;
+}
