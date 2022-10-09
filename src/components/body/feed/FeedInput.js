@@ -6,12 +6,20 @@ import PostModal from './PostModal';
 const FeedInput = (props) => {
   const [postModalOpen, setPostModalOpen] = useState(false);
 
+  const openModal = () => {
+    setPostModalOpen(true);
+  };
+
+  const closeModal = () => {
+    setPostModalOpen(false);
+  };
+
   return (
     <div className={classes.feed_input}>
-      {!postModalOpen && <PostModal />}
+      {postModalOpen && <PostModal closeModalHandler={closeModal} />}
       <div className={classes.feed_input__create}>
         <Avatar className={classes.inputAvatar} />
-        <div className={classes.inputArea}>
+        <div className={classes.inputArea} onClick={openModal}>
           <p>Start a post</p>
         </div>
       </div>
