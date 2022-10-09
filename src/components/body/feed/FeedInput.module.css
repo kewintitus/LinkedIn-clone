@@ -1,0 +1,69 @@
+.feed_input {
+  display: flex;
+  flex-direction: column;
+  margin: 10px;
+  background-color: white;
+  padding: 15px;
+  gap: 8px;
+  border-radius: 10px;
+}
+.feed_input__create {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+.inputAvatar {
+  width: 45px;
+  height: 45px;
+}
+
+.inputArea {
+  flex: 0 1 100%;
+  background-color: white;
+  border: 1px solid darkgray;
+  padding: 16px 14px;
+  border-radius: 100px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+}
+
+.inputArea p {
+  color: rgb(148, 148, 148);
+}
+
+/*Icons*/
+.feed_input__options {
+  display: flex;
+  justify-content: space-between;
+}
+
+.icon {
+  display: flex;
+  padding: 16px 12px;
+  gap: 10px;
+  align-items: center;
+  justify-content: flex-start;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.icon svg {
+  width: 30px;
+  height: 30px;
+}
+
+.icon p {
+  color: rgb(148, 148, 148);
+}
+
+/*Hover*/
+.inputArea:hover {
+  background-color: rgb(231, 231, 231);
+}
+
+.icon:hover {
+  background-color: rgb(231, 231, 231);
+}
