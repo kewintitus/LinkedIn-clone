@@ -5,6 +5,10 @@
   align-items: center; */
 }
 
+.app.login {
+  background-color: white;
+}
+
 .app_body {
   display: flex;
 }
