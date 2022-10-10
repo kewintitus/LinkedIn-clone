@@ -1,5 +1,13 @@
 import React, { useRef } from 'react';
 import classes from './Login.module.css';
+import {
+  getAuth,
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+} from 'firebase/auth';
+import { auth } from '../../../firebase/firebase';
+import { login, logout } from '../../../features/userSlice';
+import { useDispatch } from 'react-redux';
 
 const Login = () => {
   const name = useRef();
@@ -7,13 +15,37 @@ const Login = () => {
   const photoUrl = useRef();
   const password = useRef();
 
+  const dispatch = useDispatch();
+
   const loginHandler = () => {
     if (
       email.current.value.toString() === '' ||
       password.current.value.toString() === ''
     )
       return;
-    console.log('click');
+    signInWithEmailAndPassword(
+      auth,
+      email.current.value.toString(),
+      password.current.value.toString()
+    )
+      .then((userCredential) => {
+        const user = userCredential.user;
+        console.log(user);
+        console.log('loginsuccess');
+        dispatch(
+          login({
+            email: user.email,
+            uid: user.uid,
+            displayName: name.current.value.toString(),
+            photoUrl: photoUrl?.current?.value,
+          })
+        );
+      })
+      .catch((error) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        console.log(`${errorCode}: ${errorMessage}`);
+      });
   };
 
   const registerHandler = () => {
@@ -24,7 +56,20 @@ const Login = () => {
     )
       return;
 
-    console.log('registered');
+    console.log(email.current.value, password.current.value);
+    createUserWithEmailAndPassword(
+      auth,
+      email.current.value.toString(),
+      password.current.value.toString()
+    ).then((userCredential) => {
+      console.log(userCredential.user);
+      login({
+        email: user.email,
+        uid: user.uid,
+        displayName: name.current.value.toString(),
+        photoUrl: photoUrl?.current?.value,
+      });
+    });
   };
 
   return (
