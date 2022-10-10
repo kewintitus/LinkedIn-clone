@@ -6,6 +6,7 @@
   padding: 15px;
   gap: 8px;
   border-radius: 10px;
+  border: 1px solid lightgray;
 }
 .feed_input__create {
   display: flex;
