@@ -8,6 +8,7 @@
   margin: 10px;
   margin-left: 80px;
   flex: 0.2;
+  border-radius: 10px;
 }
 
 .sidebar__top {
@@ -96,6 +97,8 @@
   margin-left: 80px;
   flex: 0.2;
   border: solid 1px lightgray;
+  position: sticky;
+  top: 80px;
 }
 
 .recentTitle {
