@@ -5,10 +5,30 @@ import classes from './PostModal.module.css';
 import PublicOutlinedIcon from '@mui/icons-material/PublicOutlined';
 import ArrowDropDownOutlinedIcon from '@mui/icons-material/ArrowDropDownOutlined';
 import CloseOutlinedIcon from '@mui/icons-material/CloseOutlined';
+import { db } from '../../../firebase/firebase';
+import { collection, addDoc, doc, Timestamp } from 'firebase/firestore';
 
 const PostModal = (props) => {
   const [isActive, setIsActive] = useState(false);
   const msgRef = useRef();
+
+  const addData = async () => {
+    try {
+      const docRef = await addDoc(collection(db, 'posts'), {
+        name: 'Kewin',
+        title: 'Engineer',
+        message: msgRef.current.value.toString(),
+        timestamp: Timestamp.now().seconds,
+      });
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const sendPost = () => {
+    if (msgRef.current.value.toString().trim() === '') return;
+    addData();
+  };
 
   const closeModal = () => {
     props.closeModalHandler();
@@ -178,7 +198,10 @@ const PostModal = (props) => {
               <p>Anyone</p>
             </div>
           </div>
-          <div className={`${classes.send} ${isActive && classes.active}`}>
+          <div
+            className={`${classes.send} ${isActive && classes.active}`}
+            onClick={sendPost}
+          >
             <div className={classes.postButton}>
               <p>Post</p>
             </div>
