@@ -25,6 +25,9 @@ const Header = (props) => {
 
   const logoutHandler = () => {
     dispatch(logout());
+    localStorage.removeItem('name');
+    localStorage.removeItem('photoUrl');
+    localStorage.removeItem('title');
     signOut(auth)
       .then(() => {
         alert('signed out!');

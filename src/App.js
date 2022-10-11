@@ -34,9 +34,9 @@ function App() {
   //       );
   //       dispatch(
   //         updateDisplayData({
-  //           name: userData.name || 'userName',
-  //           photoUrl: userData.photoUrl || '',
-  //           title: userData.title,
+  //           name: localStorage.getItem('name'),
+  //           photoUrl: localStorage.getItem('photoUrl'),
+  //           title: localStorage.getItem('title'),
   //         })
   //       );
   //     } else {

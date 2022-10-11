@@ -1,4 +1,5 @@
-import React, { useRef, useState } from 'react';
+import * as React from 'react';
+import { useRef, useState } from 'react';
 import classes from './Login.module.css';
 import {
   createUserWithEmailAndPassword,
@@ -58,6 +59,10 @@ const Login = () => {
       return;
     }
 
+    // localStorage.setItem('name', name.current.value.toString());
+    // localStorage.setItem('photoUrl', photoUrl.current.value.toString());
+    // localStorage.setItem('title', title.current.value.toString());
+
     dispatch(
       updateDisplayData({
         name: name.current.value.toString(),
@@ -101,6 +106,9 @@ const Login = () => {
       return;
     }
 
+    // localStorage.setItem('name', name.current.value.toString());
+    // localStorage.setItem('photoUrl', photoUrl.current.value.toString());
+    // localStorage.setItem('title', title.current.value.toString());
     dispatch(
       updateDisplayData({
         name: name.current.value.toString(),
