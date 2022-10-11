@@ -11,8 +11,25 @@ import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
 import AppsIcon from '@mui/icons-material/Apps';
 import HeaderNavOptions from './HeaderNavOptions';
+import { useDispatch } from 'react-redux';
+import { logout } from '../../features/userSlice';
+import { signOut } from 'firebase/auth';
+import { auth } from '../../firebase/firebase';
 
 const Header = (props) => {
+  const dispatch = useDispatch();
+
+  const logoutHandler = () => {
+    dispatch(logout());
+    signOut(auth)
+      .then(() => {
+        alert('signed out!');
+      })
+      .catch((err) => {
+        alert(err);
+      });
+  };
+
   return (
     <div className={classes.header}>
       <div className={classes['header-left']}>
@@ -41,7 +58,10 @@ const Header = (props) => {
         <HeaderNavOptions icon={NotificationsIcon} label="Notifications" />
 
         <div className={classes['header-right--nav']}>
-          <AccountCircleIcon className={classes.nav_icon} />
+          <AccountCircleIcon
+            className={classes.nav_icon}
+            onClick={logoutHandler}
+          />
           <div className={classes['nav-labelDropdown']}>
             <label>Me</label>
             <ArrowDropDownIcon />

@@ -1,9 +1,12 @@
 import React, { useRef } from 'react';
 import classes from './Login.module.css';
 import {
-  getAuth,
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
+  setPersistence,
+  signInWithRedirect,
+  inMemoryPersistence,
+  GoogleAuthProvider,
 } from 'firebase/auth';
 import { auth } from '../../../firebase/firebase';
 import { login, logout } from '../../../features/userSlice';
@@ -45,6 +48,7 @@ const Login = () => {
         const errorCode = error.code;
         const errorMessage = error.message;
         console.log(`${errorCode}: ${errorMessage}`);
+        alert(`${errorCode}: ${errorMessage}`);
       });
   };
 
@@ -62,13 +66,17 @@ const Login = () => {
       email.current.value.toString(),
       password.current.value.toString()
     ).then((userCredential) => {
+      const user = userCredential.user;
+
       console.log(userCredential.user);
-      login({
-        email: user.email,
-        uid: user.uid,
-        displayName: name.current.value.toString(),
-        photoUrl: photoUrl?.current?.value,
-      });
+      dispatch(
+        login({
+          email: user.email,
+          uid: user.uid,
+          displayName: name.current.value.toString(),
+          photoUrl: photoUrl?.current?.value,
+        })
+      );
     });
   };
 
