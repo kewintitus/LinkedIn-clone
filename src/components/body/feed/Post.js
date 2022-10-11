@@ -3,8 +3,13 @@ import React from 'react';
 import classes from './Post.module.css';
 
 import MoreHorizIcon from '@mui/icons-material/MoreHoriz';
+import { useSelector } from 'react-redux';
+import { selectData, selectUser } from '../../../features/userSlice';
 
 const Post = (props) => {
+  const user = useSelector(selectUser);
+  const userData = useSelector(selectData);
+
   return props.data.map((data) => {
     return (
       <div className={classes.post}>
@@ -12,8 +17,8 @@ const Post = (props) => {
           <div className={classes.post_userDetails}>
             <Avatar />
             <div className={classes.post_userDescription}>
-              <h4>{data.name}</h4>
-              <h5>{data.title}</h5>
+              <h4>{userData.name}</h4>
+              <h5>{user.email}</h5>
             </div>
           </div>
           <div className={classes.post_connect}>

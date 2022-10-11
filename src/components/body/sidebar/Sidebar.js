@@ -6,16 +6,24 @@ import TagIcon from '@mui/icons-material/Tag';
 
 import classes from './Sidebar.module.css';
 import { Add } from '@mui/icons-material';
+import { useSelector } from 'react-redux';
+import { selectData, selectUser } from '../../../features/userSlice';
 
 const Sidebar = () => {
+  const user = useSelector(selectUser);
+  const userData = useSelector(selectData);
+  console.log(user, userData);
+
   return (
     <div className={classes.sidebar_container}>
       <div className={classes.sidebar}>
         <div className={classes.sidebar__top}>
           <img src="https://wallpaperaccess.com/full/187161.jpg" alt=""></img>
-          <Avatar className={classes.sidebarAvatar} />
-          <h2>Kewin Titus A</h2>
-          <h4>Title</h4>
+          <Avatar className={classes.sidebarAvatar} src={userData.photoUrl}>
+            {user.email[0]}
+          </Avatar>
+          <h2>{userData.name}</h2>
+          <h4>{`${userData.title || user.email}`}</h4>
         </div>
 
         <div className={classes.sidebar__stats}>

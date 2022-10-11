@@ -3,13 +3,9 @@ import classes from './Login.module.css';
 import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
-  setPersistence,
-  signInWithRedirect,
-  inMemoryPersistence,
-  GoogleAuthProvider,
 } from 'firebase/auth';
 import { auth } from '../../../firebase/firebase';
-import { login, logout } from '../../../features/userSlice';
+import { login, logout, updateDisplayData } from '../../../features/userSlice';
 import { useDispatch } from 'react-redux';
 
 const Login = () => {
@@ -17,21 +13,28 @@ const Login = () => {
   const email = useRef();
   const photoUrl = useRef();
   const password = useRef();
-
-  const [newPhotoUrl, setNewPhotoUrl] = useState('');
-  const [newName, setNewName] = useState('');
+  const title = useRef();
 
   const dispatch = useDispatch();
 
   const loginHandler = () => {
     if (
       email.current.value.toString() === '' ||
-      password.current.value.toString() === ''
-    )
+      password.current.value.toString() === '' ||
+      name.current.value.toString() === ''
+    ) {
+      alert('Name, email and password fields must be filled');
       return;
+    }
 
-    setNewName(name.current.value.toString());
-    setNewPhotoUrl(photoUrl.current.value.toString());
+    dispatch(
+      updateDisplayData({
+        name: name.current.value.toString(),
+        photoUrl: photoUrl.current.value.toString(),
+        title: title.current.value.toString(),
+      })
+    );
+
     signInWithEmailAndPassword(
       auth,
       email.current.value.toString(),
@@ -41,12 +44,11 @@ const Login = () => {
         const user = userCredential.user;
         console.log(user);
         console.log('loginsuccess');
+
         dispatch(
           login({
             email: user.email,
             uid: user.uid,
-            displayName: user.displayName,
-            profileUrl: user.photoURL,
           })
         );
       })
@@ -59,21 +61,22 @@ const Login = () => {
   };
 
   const registerHandler = () => {
-    console.log(
-      name,
-      photoUrl.current.value,
-      email.current.value,
-      password.current.value
-    );
-
     if (
       name.current.value.toString() === '' ||
       email.current.value.toString() === '' ||
       password.current.value.toString() === ''
-    )
+    ) {
+      alert('Name, email and password fields must be filled');
       return;
-    setNewName(name.current.value.toString());
-    setNewPhotoUrl(photoUrl.current.value.toString());
+    }
+
+    dispatch(
+      updateDisplayData({
+        name: name.current.value.toString(),
+        photoUrl: photoUrl.current.value.toString(),
+        title: title.current.value.toString(),
+      })
+    );
 
     console.log(email.current.value, password.current.value);
 
@@ -85,14 +88,11 @@ const Login = () => {
       .then((userCredential) => {
         const user = userCredential.user;
 
-        console.log(newName);
         console.log(userCredential.user);
         dispatch(
           login({
             email: user.email,
             uid: user.uid,
-            displayName: newName || user.displayName,
-            profileUrl: newPhotoUrl || user.photoURL,
           })
         );
       })
@@ -124,6 +124,10 @@ const Login = () => {
         <div className={classes.field}>
           <input type="text" id="username" ref={name} required></input>
           <label htmlFor="username">Full Name</label>
+        </div>
+        <div className={classes.field}>
+          <input type="text" id="title" ref={title} required></input>
+          <label htmlFor="title">Job title</label>
         </div>
         <div className={classes.field}>
           <input type="text" id="email" ref={email} required></input>
