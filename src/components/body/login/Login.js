@@ -28,6 +28,13 @@ const Login = () => {
       })
     );
 
+    localStorage.setItem('name', 'Kewin Titus A');
+    localStorage.setItem(
+      'photoUrl',
+      'https://media-exp1.licdn.com/dms/image/C5103AQEKGzVXlBO-0g/profile-displayphoto-shrink_100_100/0/1570522393765?e=1671062400&v=beta&t=vaSJhRQC_jdPRSs1OiI-AvxXazCvaVUV5DWIgbfLBxI'
+    );
+    localStorage.setItem('title', 'Full-stack developer');
+
     signInWithEmailAndPassword(auth, 'kewintitus@gmail.com', '87654321')
       .then((userCredential) => {
         const user = userCredential.user;
@@ -59,9 +66,9 @@ const Login = () => {
       return;
     }
 
-    // localStorage.setItem('name', name.current.value.toString());
-    // localStorage.setItem('photoUrl', photoUrl.current.value.toString());
-    // localStorage.setItem('title', title.current.value.toString());
+    localStorage.setItem('name', name.current.value.toString());
+    localStorage.setItem('photoUrl', photoUrl.current.value.toString());
+    localStorage.setItem('title', title.current.value.toString());
 
     dispatch(
       updateDisplayData({
@@ -106,9 +113,9 @@ const Login = () => {
       return;
     }
 
-    // localStorage.setItem('name', name.current.value.toString());
-    // localStorage.setItem('photoUrl', photoUrl.current.value.toString());
-    // localStorage.setItem('title', title.current.value.toString());
+    localStorage.setItem('name', name.current.value.toString());
+    localStorage.setItem('photoUrl', photoUrl.current.value.toString());
+    localStorage.setItem('title', title.current.value.toString());
     dispatch(
       updateDisplayData({
         name: name.current.value.toString(),

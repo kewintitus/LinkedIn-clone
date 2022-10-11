@@ -23,27 +23,27 @@ function App() {
   const dispatch = useDispatch();
   console.log(user);
 
-  // useEffect(() => {
-  //   onAuthStateChanged(auth, (user) => {
-  //     if (user) {
-  //       dispatch(
-  //         login({
-  //           email: user.email,
-  //           uid: user.uid,
-  //         })
-  //       );
-  //       dispatch(
-  //         updateDisplayData({
-  //           name: localStorage.getItem('name'),
-  //           photoUrl: localStorage.getItem('photoUrl'),
-  //           title: localStorage.getItem('title'),
-  //         })
-  //       );
-  //     } else {
-  //       dispatch(logout());
-  //     }
-  //   });
-  // }, []);
+  useEffect(() => {
+    onAuthStateChanged(auth, (user) => {
+      if (user) {
+        dispatch(
+          login({
+            email: user.email,
+            uid: user.uid,
+          })
+        );
+        dispatch(
+          updateDisplayData({
+            name: localStorage.getItem('name'),
+            photoUrl: localStorage.getItem('photoUrl'),
+            title: localStorage.getItem('title'),
+          })
+        );
+      } else {
+        dispatch(logout());
+      }
+    });
+  }, []);
 
   return (
     <div className={`app ${!user && 'login'}`}>

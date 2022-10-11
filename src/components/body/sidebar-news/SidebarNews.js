@@ -13,10 +13,22 @@ const SidebarNews = (props) => {
           <h3>LinkedIn News</h3>
         </div>
         <div className={classes.newsContent}>
-          <NewsRow className={classes.newsContent_Row} />
-          <NewsRow />
-          <NewsRow />
-          <NewsRow />
+          <NewsRow
+            title={"Here are 2022's Top Startups in India"}
+            postedOn={'1 day ago'}
+          />
+          <NewsRow
+            title={'Ben Bernanke wins Nobel Economics'}
+            postedOn={'7h ago'}
+          />
+          <NewsRow
+            title={'Demand for e-bikes shoots up'}
+            postedOn={'2 days ago'}
+          />
+          <NewsRow
+            title={'It’s celebration mode at India Inc'}
+            postedOn={'2h ago'}
+          />
         </div>
         <div className={classes.newsFooter}>
           <p>Show More</p>
