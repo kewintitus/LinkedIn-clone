@@ -4,9 +4,9 @@
   margin-top: 20px;
   border-radius: 10px;
   border: 1px solid lightgray;
-  position: sticky;
+  /* position: sticky;
   top: 80px;
-  z-index: 999;
+  z-index: 999; */
 }
 
 .ad_badgeContainer {
