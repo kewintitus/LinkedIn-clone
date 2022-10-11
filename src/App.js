@@ -23,7 +23,7 @@ function App() {
             email: user.email,
             uid: user.uid,
             displayName: user.displayName,
-            photoUrl: user.photoUrl,
+            profileUrl: user.profileUrl,
           })
         );
       } else {

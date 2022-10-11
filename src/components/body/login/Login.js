@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React, { useRef, useState } from 'react';
 import classes from './Login.module.css';
 import {
   createUserWithEmailAndPassword,
@@ -18,6 +18,9 @@ const Login = () => {
   const photoUrl = useRef();
   const password = useRef();
 
+  const [newPhotoUrl, setNewPhotoUrl] = useState('');
+  const [newName, setNewName] = useState('');
+
   const dispatch = useDispatch();
 
   const loginHandler = () => {
@@ -26,6 +29,9 @@ const Login = () => {
       password.current.value.toString() === ''
     )
       return;
+
+    setNewName(name.current.value.toString());
+    setNewPhotoUrl(photoUrl.current.value.toString());
     signInWithEmailAndPassword(
       auth,
       email.current.value.toString(),
@@ -39,8 +45,8 @@ const Login = () => {
           login({
             email: user.email,
             uid: user.uid,
-            displayName: name.current.value.toString(),
-            photoUrl: photoUrl?.current?.value,
+            displayName: user.displayName,
+            profileUrl: user.photoURL,
           })
         );
       })
@@ -53,31 +59,46 @@ const Login = () => {
   };
 
   const registerHandler = () => {
+    console.log(
+      name,
+      photoUrl.current.value,
+      email.current.value,
+      password.current.value
+    );
+
     if (
       name.current.value.toString() === '' ||
       email.current.value.toString() === '' ||
       password.current.value.toString() === ''
     )
       return;
+    setNewName(name.current.value.toString());
+    setNewPhotoUrl(photoUrl.current.value.toString());
 
     console.log(email.current.value, password.current.value);
+
     createUserWithEmailAndPassword(
       auth,
       email.current.value.toString(),
       password.current.value.toString()
-    ).then((userCredential) => {
-      const user = userCredential.user;
+    )
+      .then((userCredential) => {
+        const user = userCredential.user;
 
-      console.log(userCredential.user);
-      dispatch(
-        login({
-          email: user.email,
-          uid: user.uid,
-          displayName: name.current.value.toString(),
-          photoUrl: photoUrl?.current?.value,
-        })
-      );
-    });
+        console.log(newName);
+        console.log(userCredential.user);
+        dispatch(
+          login({
+            email: user.email,
+            uid: user.uid,
+            displayName: newName || user.displayName,
+            profileUrl: newPhotoUrl || user.photoURL,
+          })
+        );
+      })
+      .catch((error) => {
+        alert(error);
+      });
   };
 
   return (
