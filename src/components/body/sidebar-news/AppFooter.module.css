@@ -1,0 +1,22 @@
+.footerOptions {
+  margin: 10px;
+  display: flex;
+  flex-wrap: wrap;
+  padding: 10px 40px;
+  align-items: center;
+  justify-content: center;
+}
+
+.footerOption {
+  padding: 4px 10px;
+  display: flex;
+  font-size: 14px;
+  color: rgb(139, 139, 139);
+}
+
+.footerOption:hover {
+  color: #0a66c2;
+  text-decoration: underline;
+
+  cursor: pointer;
+}

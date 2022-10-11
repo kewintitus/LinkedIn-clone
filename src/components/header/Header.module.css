@@ -77,8 +77,8 @@
   color: rgb(231, 231, 231);
   justify-self: center;
   align-self: center;
-  height: 24px;
-  width: 24px;
+  height: 24px !important;
+  width: 24px !important;
   cursor: pointer;
 }
 

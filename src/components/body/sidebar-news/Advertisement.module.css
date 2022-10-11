@@ -1,0 +1,62 @@
+.ad {
+  margin: 10px;
+  background-color: white;
+  margin-top: 20px;
+  border-radius: 10px;
+  border: 1px solid lightgray;
+  position: sticky;
+  top: 80px;
+  z-index: 999;
+}
+
+.ad_badgeContainer {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.ad_badge {
+  display: flex;
+  padding-right: 5px;
+}
+
+.adHeader {
+  text-align: center;
+  padding: 10px 50px;
+  font-size: 14px;
+}
+
+.adContentContainer {
+  display: flex;
+  padding: 10px 30px;
+  justify-content: center;
+  gap: 15px;
+}
+
+.adIcon {
+  width: 80px;
+  height: 80px;
+}
+
+.adOffer {
+  padding: 15px 40px;
+  text-align: center;
+  font-size: 18px;
+  color: rgb(79, 79, 79);
+  font-weight: 300;
+}
+
+.adOfferActionContainer {
+  display: flex;
+  justify-content: center;
+}
+
+.adOfferAction {
+  color: #0a66c2;
+  padding: 10px 20px;
+  border: 1px solid #0a66c2;
+  display: inline-block;
+  border-radius: 200px;
+  margin-bottom: 20px;
+  font-weight: 600;
+  cursor: pointer;
+}

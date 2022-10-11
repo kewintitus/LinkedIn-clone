@@ -1,0 +1,19 @@
+.newsRow {
+  display: flex;
+  padding-left: 15px;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+.newsRow:hover {
+  background-color: rgb(238, 238, 238);
+}
+
+.newsRow_headline {
+  color: rgb(50, 50, 50);
+  font-weight: 600;
+}
+
+.newsRow_postDate {
+  color: rgb(128, 128, 128);
+  font-weight: 300;
+}

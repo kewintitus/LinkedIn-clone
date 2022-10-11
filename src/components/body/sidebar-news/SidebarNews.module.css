@@ -1,4 +1,46 @@
 .sidebarRight {
-  background-color: aqua;
-  flex: 0.325;
+  flex: 0.34;
+}
+
+.news {
+  margin: 10px;
+
+  background-color: white;
+  border-radius: 10px;
+  border: 1px solid lightgray;
+}
+
+.newsHeader {
+  padding: 10px 10px;
+}
+
+.newsContent {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.newsContent_Row {
+  background-color: rgb(238, 238, 238);
+}
+
+.newsFooter {
+  display: flex;
+  padding: 10px;
+  padding-left: 20px;
+  margin-top: 5px;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.newsFooter:hover {
+  background-color: rgb(234, 234, 234);
+}
+
+.footerCopyRights {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  font-size: 14px;
 }
