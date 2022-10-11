@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import './App.css';
 import Feed from './components/body/feed/Feed';
 import Login from './components/body/login/Login';
+import SidebarNews from './components/body/sidebar-news/SidebarNews';
 import Sidebar from './components/body/sidebar/Sidebar';
 import Header from './components/header/Header';
 import { login, logout, selectUser } from './features/userSlice';
@@ -41,6 +42,7 @@ function App() {
         <div className="app_body">
           <Sidebar />
           <Feed />
+          <SidebarNews />
         </div>
       )}
     </div>
