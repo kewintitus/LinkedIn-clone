@@ -53,12 +53,15 @@ input:valid + label {
   align-items: center;
 }
 
-.login_form button {
+.loginbtn {
   align-self: stretch;
   margin-top: 20px;
   padding: 10px 0px;
   background-color: #0077b5;
   color: white;
+  border: none;
+  outline: none;
+  cursor: pointer;
 }
 
 .register {
@@ -78,4 +81,22 @@ input:valid + label {
   color: #0077b5;
   cursor: pointer;
   text-decoration: underline #0077b5;
+}
+
+.demoLogin {
+  position: absolute;
+  bottom: 0;
+  color: #fff;
+  padding: 10px;
+  background-color: #0077b5;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.demoLogin:hover {
+  background-color: #006094;
+}
+
+.loginbtn:hover {
+  background-color: #006094;
 }

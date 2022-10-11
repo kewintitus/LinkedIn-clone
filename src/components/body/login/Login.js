@@ -17,6 +17,37 @@ const Login = () => {
 
   const dispatch = useDispatch();
 
+  const demoLogin = () => {
+    dispatch(
+      updateDisplayData({
+        name: 'Kewin Titus A',
+        photoUrl:
+          'https://media-exp1.licdn.com/dms/image/C5103AQEKGzVXlBO-0g/profile-displayphoto-shrink_100_100/0/1570522393765?e=1671062400&v=beta&t=vaSJhRQC_jdPRSs1OiI-AvxXazCvaVUV5DWIgbfLBxI',
+        title: 'Full-stack developer',
+      })
+    );
+
+    signInWithEmailAndPassword(auth, 'kewintitus@gmail.com', '87654321')
+      .then((userCredential) => {
+        const user = userCredential.user;
+        console.log(user);
+        console.log('loginsuccess');
+
+        dispatch(
+          login({
+            email: user.email,
+            uid: user.uid,
+          })
+        );
+      })
+      .catch((error) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        console.log(`${errorCode}: ${errorMessage}`);
+        alert(`${errorCode}: ${errorMessage}`);
+      });
+  };
+
   const loginHandler = () => {
     if (
       email.current.value.toString() === '' ||
@@ -142,7 +173,11 @@ const Login = () => {
           <input type="text" id="photo" ref={photoUrl} required></input>
           <label htmlFor="photo">Photo url(optional)</label>
         </div>
-        <button type="submit" onClick={loginHandler}>
+        <button
+          className={classes.loginbtn}
+          type="submit"
+          onClick={loginHandler}
+        >
           Sign In
         </button>
       </form>
@@ -150,6 +185,9 @@ const Login = () => {
         <span>Not a member?</span>
         <span className={classes.register_button} onClick={registerHandler}>
           Register now
+        </span>
+        <span className={classes.demoLogin} onClick={demoLogin}>
+          Demo login
         </span>
       </div>
     </div>

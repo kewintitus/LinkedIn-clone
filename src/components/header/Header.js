@@ -11,13 +11,17 @@ import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
 import AppsIcon from '@mui/icons-material/Apps';
 import HeaderNavOptions from './HeaderNavOptions';
-import { useDispatch } from 'react-redux';
-import { logout } from '../../features/userSlice';
+import { useDispatch, useSelector } from 'react-redux';
+import { logout, selectData, selectUser } from '../../features/userSlice';
 import { signOut } from 'firebase/auth';
 import { auth } from '../../firebase/firebase';
+import { Avatar } from '@mui/material';
 
 const Header = (props) => {
   const dispatch = useDispatch();
+
+  const user = useSelector(selectUser);
+  const userData = useSelector(selectData);
 
   const logoutHandler = () => {
     dispatch(logout());
@@ -58,10 +62,13 @@ const Header = (props) => {
         <HeaderNavOptions icon={NotificationsIcon} label="Notifications" />
 
         <div className={classes['header-right--nav']}>
-          <AccountCircleIcon
-            className={classes.nav_icon}
+          <Avatar
+            className={classes.account_icon}
             onClick={logoutHandler}
-          />
+            src={userData.photoUrl}
+          >
+            {user.email[0]}
+          </Avatar>
           <div className={classes['nav-labelDropdown']}>
             <label>Me</label>
             <ArrowDropDownIcon />
@@ -71,7 +78,7 @@ const Header = (props) => {
         <div className={classes['header-right--nav']}>
           <AppsIcon className={classes.nav_icon} />
           <div className={classes['nav-labelDropdown']}>
-            <label>Me</label>
+            <label>Work</label>
             <ArrowDropDownIcon />
           </div>
         </div>

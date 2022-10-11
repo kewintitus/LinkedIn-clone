@@ -15,10 +15,10 @@ const Post = (props) => {
       <div className={classes.post}>
         <div className={classes.post_header}>
           <div className={classes.post_userDetails}>
-            <Avatar />
+            <Avatar src={userData.photoUrl}>{user.email[0]}</Avatar>
             <div className={classes.post_userDescription}>
               <h4>{userData.name}</h4>
-              <h5>{user.email}</h5>
+              <h5>{`${userData.title || user.email}`}</h5>
             </div>
           </div>
           <div className={classes.post_connect}>

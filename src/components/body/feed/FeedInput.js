@@ -1,10 +1,15 @@
 import { Avatar } from '@mui/material';
 import React, { useState } from 'react';
+import { useSelector } from 'react-redux';
+import { selectData, selectUser } from '../../../features/userSlice';
 import classes from './FeedInput.module.css';
 import PostModal from './PostModal';
 
 const FeedInput = (props) => {
   const [postModalOpen, setPostModalOpen] = useState(false);
+
+  const user = useSelector(selectUser);
+  const userData = useSelector(selectData);
 
   const openModal = () => {
     setPostModalOpen(true);
@@ -18,7 +23,9 @@ const FeedInput = (props) => {
     <div className={classes.feed_input}>
       {postModalOpen && <PostModal closeModalHandler={closeModal} />}
       <div className={classes.feed_input__create}>
-        <Avatar className={classes.inputAvatar} />
+        <Avatar className={classes.inputAvatar} src={userData.photoUrl}>
+          {user.email[0]}
+        </Avatar>
         <div className={classes.inputArea} onClick={openModal}>
           <p>Start a post</p>
         </div>

@@ -69,6 +69,17 @@
   color: rgb(195, 193, 193);
   justify-self: center;
   align-self: center;
+  height: 24px;
+  width: 24px;
+}
+
+.account_icon {
+  color: rgb(231, 231, 231);
+  justify-self: center;
+  align-self: center;
+  height: 24px;
+  width: 24px;
+  cursor: pointer;
 }
 
 .header-right--nav label {
