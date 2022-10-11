@@ -33,8 +33,8 @@
 }
 
 .adIcon {
-  width: 80px;
-  height: 80px;
+  width: 80px !important;
+  height: 80px !important;
 }
 
 .adOffer {

@@ -3,8 +3,13 @@ import React from 'react';
 import MoreHorizIcon from '@mui/icons-material/MoreHoriz';
 import classes from './Advertisement.module.css';
 import { Avatar } from '@mui/material';
+import { useSelector } from 'react-redux';
+import { selectData, selectUser } from '../../../features/userSlice';
 
 const Advertisement = () => {
+  const userData = useSelector(selectData);
+  const user = useSelector(selectUser);
+
   return (
     <div className={classes.ad}>
       <div className={classes.ad_badgeContainer}>
@@ -19,7 +24,9 @@ const Advertisement = () => {
         </p>
       </div>
       <div className={classes.adContentContainer}>
-        <Avatar className={classes.adIcon}></Avatar>
+        <Avatar className={classes.adIcon} src={userData.photoUrl}>
+          {user.email[0]}
+        </Avatar>
         <svg
           className={classes.adIcon}
           xmlns="http://www.w3.org/2000/svg"

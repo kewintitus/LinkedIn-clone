@@ -22,8 +22,10 @@ const Sidebar = () => {
           <Avatar className={classes.sidebarAvatar} src={userData.photoUrl}>
             {user.email[0]}
           </Avatar>
-          <h2>{userData.name}</h2>
-          <h4>{`${userData.title || user.email}`}</h4>
+          <h2 className={classes.sidebarName}>{userData.name}</h2>
+          <h4 className={classes.sidebarTitle}>{`${
+            userData.title || user.email
+          }`}</h4>
         </div>
 
         <div className={classes.sidebar__stats}>
