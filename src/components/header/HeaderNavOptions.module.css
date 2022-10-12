@@ -13,19 +13,19 @@
   align-self: center;
 }
 
-/* hr {
-  color: black;
-  display: none;
-  height: 3px;
-  background-color: black;
-  width: 120%;
+hr {
+  color: transparent;
+  /* display: none; */
+  height: 0px;
+  background-color: transparent;
+  width: 0%;
   justify-self: center;
   text-align: center;
   position: absolute;
-  bottom: -8px;
-} */
+}
 
 hr.active {
+  transition: all 0.3s;
   color: black;
   /* display: none; */
   height: 3px;

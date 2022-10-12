@@ -24,37 +24,50 @@ const Header = (props) => {
       label: 'Home',
 
       active: true,
+      key: 1,
     },
     {
       icon: SupervisorAccountRoundedIcon,
       label: 'Connect',
 
       active: false,
+      key: 2,
     },
     {
       icon: WorkRoundedIcon,
       label: 'Jobs',
 
       active: false,
+      key: 3,
     },
     {
       icon: SmsIcon,
       label: 'Messaging',
 
       active: false,
+      key: 4,
     },
     {
       icon: NotificationsIcon,
       label: 'Notifications',
 
       active: false,
+      key: 5,
     },
   ];
 
   const dispatch = useDispatch();
 
   const [navData, updateNavData] = useState(initData);
-  const navActiveHandler = () => {};
+  const navActiveHandler = (id) => {
+    const newData = navData.map((data) => {
+      console.log(data.key, id);
+      if (data.key === id) data.active = true;
+      else data.active = false;
+      return data;
+    });
+    updateNavData(newData);
+  };
 
   const user = useSelector(selectUser);
   const userData = useSelector(selectData);
@@ -96,6 +109,8 @@ const Header = (props) => {
       <div className={classes['header-right']}>
         {navData.map((data) => (
           <HeaderNavOptions
+            key={data.key}
+            id={data.key}
             icon={data.icon}
             label={data.label}
             navActivate={navActiveHandler}
