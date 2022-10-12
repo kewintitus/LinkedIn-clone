@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import classes from './Header.module.css';
 
 import SearchIcon from '@mui/icons-material/Search';
@@ -18,7 +18,43 @@ import { auth } from '../../firebase/firebase';
 import { Avatar } from '@mui/material';
 
 const Header = (props) => {
+  const initData = [
+    {
+      icon: HomeRoundedIcon,
+      label: 'Home',
+
+      active: true,
+    },
+    {
+      icon: SupervisorAccountRoundedIcon,
+      label: 'Connect',
+
+      active: false,
+    },
+    {
+      icon: WorkRoundedIcon,
+      label: 'Jobs',
+
+      active: false,
+    },
+    {
+      icon: SmsIcon,
+      label: 'Messaging',
+
+      active: false,
+    },
+    {
+      icon: NotificationsIcon,
+      label: 'Notifications',
+
+      active: false,
+    },
+  ];
+
   const dispatch = useDispatch();
+
+  const [navData, updateNavData] = useState(initData);
+  const navActiveHandler = () => {};
 
   const user = useSelector(selectUser);
   const userData = useSelector(selectData);
@@ -58,11 +94,23 @@ const Header = (props) => {
         <input type="text"></input>
       </div>
       <div className={classes['header-right']}>
-        <HeaderNavOptions icon={HomeRoundedIcon} label="Home" />
+        {navData.map((data) => (
+          <HeaderNavOptions
+            icon={data.icon}
+            label={data.label}
+            navActivate={navActiveHandler}
+            active={data.active}
+          />
+        ))}
+        {/* <HeaderNavOptions
+          icon={HomeRoundedIcon}
+          label="Home"
+          onClick={navActiveHandler}
+        />
         <HeaderNavOptions icon={SupervisorAccountRoundedIcon} label="Connect" />
         <HeaderNavOptions icon={WorkRoundedIcon} label="Jobs" />
         <HeaderNavOptions icon={SmsIcon} label="Messaging" />
-        <HeaderNavOptions icon={NotificationsIcon} label="Notifications" />
+        <HeaderNavOptions icon={NotificationsIcon} label="Notifications" /> */}
 
         <div className={classes['header-right--nav']}>
           <Avatar

@@ -13,9 +13,44 @@
   align-self: center;
 }
 
+/* hr {
+  color: black;
+  display: none;
+  height: 3px;
+  background-color: black;
+  width: 120%;
+  justify-self: center;
+  text-align: center;
+  position: absolute;
+  bottom: -8px;
+} */
+
+hr.active {
+  color: black;
+  /* display: none; */
+  height: 3px;
+  background-color: black;
+  width: 140%;
+  justify-self: center;
+  text-align: center;
+  position: absolute;
+  bottom: -16px;
+}
+.nav_icon.active {
+  color: black;
+}
+
 .header-right--nav label {
   font-size: 14px;
   color: rgb(156, 156, 156);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+.header-right--nav label.active {
+  color: #000;
 }
 
 .header-right--nav:hover .nav_icon {
