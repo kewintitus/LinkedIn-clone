@@ -17,7 +17,7 @@ Required Fields - Full Name, Email, Password.
 Optional fields - Job Title, Photo URL;\
 
 ### Create New Post
-After login click on create new post to create a post
+After login click on start a post to create a post
 
 ### Logout
 To Logout click on Me avatar image in top right corner
